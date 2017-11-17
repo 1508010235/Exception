@@ -1,0 +1,30 @@
+/**
+ * @Title: Exception1.java
+ * @ClassName: Exception1
+ * @Description:将十六进制数转换为十进制数，若输入十六进制数不正确抛出异常并处理
+ * @date 2017年11月15日 下午05:15:54
+ * @author:软工1502班-1508010235-倪旭
+ */
+
+import java.util.Scanner;
+
+public class Exception1 {
+	public static void main(String args[]) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("请输入一个十六进制数：");
+		String hex = in.next();
+		int dec = 0 ;
+		try{
+			dec=Integer.parseInt(hex,16);
+		}
+		catch(NumberFormatException e){
+			e.printStackTrace();
+			System.out.println("十六进制数输入不正确！");
+			dec=0;
+		}
+		finally {
+			System.out.println("默认处理");
+		}
+		System.out.println("转换为十进制数："+dec);
+	} 
+}
