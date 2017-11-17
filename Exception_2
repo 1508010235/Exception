@@ -1,0 +1,37 @@
+/**
+ * @Title: Exception2.java
+ * @ClassName: Exception2
+ * @Description:以YYYY/MM/DD格式输入日期，将其转换日期对象，若输入格式为不正确则抛出异常。
+ * @date 2017年11月16日 下午03:32:20
+ * @author:软工1502班-1508010235-倪旭
+ */
+
+import java.text.*;
+import java.util.*;
+
+public class Exception2 {
+	public static void main(String args[]) throws ParseException
+	{
+		System.out.println("请输入一个日期（如YYYY/MM/DD）:");
+		Scanner s = new Scanner(System.in);
+		String date = s.nextLine();
+		try {
+			System.out.println(getDate(date));
+			System.out.println("转换成功！");
+		}
+		catch(ParseException e) {
+			e.printStackTrace();
+			System.out.println("时间格式有误，转换失败！");
+			throw e;
+		}
+	}
+	public static Date getDate(String date) throws ParseException{
+		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		try {
+			return new Date(format.parse(date).getTime());
+		}
+		catch(ParseException e){
+			throw e;
+		}
+	}
+}
